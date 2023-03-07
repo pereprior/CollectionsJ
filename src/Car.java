@@ -26,6 +26,7 @@ public class Car {
     }
 
     public static void carList(){
+        cleanScreen();
         System.out.println("Car List:");
         int var = 0;
         for (String car: cars){
