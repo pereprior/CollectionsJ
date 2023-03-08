@@ -1,3 +1,5 @@
+package T1.ej2;
+
 import java.util.ArrayList;
 
 import static Utilities.Util.*;
@@ -66,7 +68,7 @@ Height {
         cleanScreen();
         System.out.println("Student's height list:");
         heightList();
-        System.out.println("Height average: " + heightAverage());
+        System.out.println("T1.ej2.Height average: " + heightAverage());
         System.out.println("Number of students taller than average: " + tallerStudents());
         System.out.println("Number of the students smaller than average: " + smallerStudents());
     }

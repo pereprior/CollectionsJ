@@ -1,4 +1,7 @@
+package T1.ej6;
+
 import java.util.ArrayList;
+
 import static Utilities.Util.*;
 
 /**
@@ -10,14 +13,10 @@ public class Present {
     public static void main(String[] args) {
         gates = new ArrayList<>();
         readGates(readLine("Set the gates to visit:"));
-        gatesList();
+        System.out.println(distribute());
 
     }
-
-    /**
-     * From a text string we obtain the numbers
-     * @param message where do we look for the numbers
-     */
+    
     public static void readGates(String message){
         char word;
         String currentNumber="";
@@ -27,13 +26,11 @@ public class Present {
 
             word = message.charAt(i);
 
-            //If the character is a number, we store it in a text string.
             if(Character.isDigit(word)){
 
                 currentNumber+=word;
                 isDigit=true;
 
-            //If not, we introduce the string that we have accumulated inside the array.
             } else {
                 if (isDigit){
 
@@ -45,17 +42,40 @@ public class Present {
 
         }
 
-        //Returns the currentNumber if the last character of the string was a number
         if (!currentNumber.isEmpty()){
             gates.add(Integer.parseInt(currentNumber));
         }
     }
 
-    public static void gatesList(){
-        for (Integer gate: gates){
-            System.out.println(gate);
+    public static String distribute() {
+        String result = "The order is: ";
+        int actual = gates.get(0);
+        int diff, min, temp;
+        int index = -1;
+
+        while (!gates.isEmpty()) {
+            min=Integer.MAX_VALUE;
+            temp=0;
+
+            for (int i = 0; i < gates.size(); i++) {
+                diff = Math.abs(gates.get(i) - actual);
+
+                if (diff <= min) {
+                    min = diff;
+                    temp = gates.get(i);
+                    index = i;
+                }
+            }
+
+            actual = temp;
+            result += actual+" ";
+            gates.remove(index);
+
         }
+
+        return result;
     }
+
 
     private static ArrayList<Integer> gates;
 
