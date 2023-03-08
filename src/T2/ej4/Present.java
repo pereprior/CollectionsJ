@@ -52,13 +52,13 @@ public class Present {
         String result = "The order is: ";
         int actual = gates.get(0);
         int diff, min, temp;
-        Iterator<Integer> iterator;
+        int index = -1;
 
         while (!gates.isEmpty()) {
-            min = Integer.MAX_VALUE;
-            temp = 0;
-            iterator = gates.iterator();
+            min=Integer.MAX_VALUE;
+            temp=0;
 
+            Iterator<Integer> iterator = gates.iterator();
             while (iterator.hasNext()) {
                 int gate = iterator.next();
                 diff = Math.abs(gate - actual);
@@ -66,12 +66,14 @@ public class Present {
                 if (diff <= min) {
                     min = diff;
                     temp = gate;
+                    index = gates.indexOf(gate);
                 }
             }
 
             actual = temp;
-            result += actual + " ";
-            iterator.remove();
+            result += actual+" ";
+            gates.remove(index);
+
         }
 
         return result;
