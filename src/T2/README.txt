@@ -1,0 +1,1 @@
+No he hecho los ejercicios de Convertir a array y de existe debido a que no habia ningun bucle foreach donde aplicar los iteradores.
