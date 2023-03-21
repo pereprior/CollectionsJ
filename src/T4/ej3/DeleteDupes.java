@@ -13,18 +13,12 @@ public class DeleteDupes {
         lists.add("Hola");
         lists.add("Adios");
         lists.add("Hola");
-        deleteDuplicates(lists);
+        System.out.println(deleteDuplicates(lists));
     }
 
-    public static void deleteDuplicates(ArrayList<String> list) {
-        Set<String> hashSet = new HashSet<String>(list);
-
-        for (String s: hashSet) {
-            list.remove(s);
-        }
-
-        Set<String> duplicates = new HashSet<String>(list);
-        System.out.println(duplicates);
+    public static ArrayList<String> deleteDuplicates(ArrayList<String> list) {
+        Set<String> sets = new HashSet<>(list);
+        return new ArrayList<>(sets);
     }
 
 }
