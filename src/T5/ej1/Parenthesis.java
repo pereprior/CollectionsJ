@@ -1,9 +1,8 @@
 package T5.ej1;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
-import static Utilities.Util.readLine;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Pere Prior
@@ -11,50 +10,29 @@ import static Utilities.Util.readLine;
 public class Parenthesis {
 
     public static void main(String[] args) {
-        String message=readLine("Enter the text:");
-        System.out.println(assertParenthesis(message));
+        System.out.println(checkParenthesis("{([{}])}"));
+        System.out.println(checkParenthesis("{([{uno}{otro}])([])}"));
+        System.out.println(checkParenthesis("{([{dos}}])([])}"));
+        System.out.println(checkParenthesis("{([{}{}])[])}"));
     }
 
-    public static boolean assertParenthesis(String message){
-        boolean isTrue = true;
-        Stack<Character> parenthesis=new Stack<>();
-        setSpecialCharacters();
+    public static boolean checkParenthesis(String message) {
+        Stack<Character> parenthesis = new Stack<>();
+        String openCharacters = "([{";
+        String closeCharacters = ")]}";
 
-        for(int i = 0; i<message.length(); i++){
-            if (checkParenthesis(message.charAt(i),openCharacters)!='f'){
-                parenthesis.push(message.charAt(i));
-            }
-
-            if (checkParenthesis(message.charAt(i),closeCharacters)!='f'){
-                /*if (parenthesis.pop()!=checkParenthesis()){
-                    isTrue=false;
-                }*/
-            }
-        }
-
-        return isTrue;
-    }
-
-    private static char checkParenthesis(Character character, ArrayList<Character> characters) {
-        char parenthesis='f';
-        for(Character element:characters){
-            if(character==element){
-                parenthesis=character;
+        for (int i = 0; i < message.length(); i++) {
+            char element = message.charAt(i);
+            if (openCharacters.indexOf(element) != -1) {
+                parenthesis.push(element);
+            } else if (closeCharacters.indexOf(element) != -1) {
+                if (parenthesis.isEmpty() || openCharacters.indexOf(parenthesis.pop()) != closeCharacters.indexOf(element)) {
+                    return false;
+                }
             }
         }
-        return parenthesis;
-    }
 
-    public static void setSpecialCharacters(){
-        openCharacters.add('(');
-        openCharacters.add('[');
-        openCharacters.add('{');
-        closeCharacters.add(')');
-        closeCharacters.add(']');
-        closeCharacters.add('}');
+        return parenthesis.isEmpty();
     }
-
-    private static ArrayList<Character> openCharacters= new ArrayList<>();
-    private static ArrayList<Character> closeCharacters= new ArrayList<>();
 
 }
