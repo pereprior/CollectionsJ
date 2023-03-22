@@ -16,25 +16,33 @@ public class Parenthesis {
     }
 
     public static boolean assertParenthesis(String message){
-        boolean isTrue = false;
-        Stack<Character> parenthesis = new Stack<>();
+        boolean isTrue = true;
+        Stack<Character> parenthesis=new Stack<>();
         setSpecialCharacters();
 
-        for(Character character:openCharacters){
-            if(stringToArrayList(message).contains(character)){
-                isTrue=true;
+        for(int i = 0; i<message.length(); i++){
+            if (checkParenthesis(message.charAt(i),openCharacters)!='f'){
+                parenthesis.push(message.charAt(i));
+            }
+
+            if (checkParenthesis(message.charAt(i),closeCharacters)!='f'){
+                /*if (parenthesis.pop()!=checkParenthesis()){
+                    isTrue=false;
+                }*/
             }
         }
 
         return isTrue;
     }
 
-    public static ArrayList<Character> stringToArrayList(String message) {
-        ArrayList<Character> list = new ArrayList<>();
-        for (int i = 0; i < message.length(); i++) {
-            list.add(message.charAt(i));
+    private static char checkParenthesis(Character character, ArrayList<Character> characters) {
+        char parenthesis='f';
+        for(Character element:characters){
+            if(character==element){
+                parenthesis=character;
+            }
         }
-        return list;
+        return parenthesis;
     }
 
     public static void setSpecialCharacters(){
