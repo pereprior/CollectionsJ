@@ -14,13 +14,12 @@ public class ArithmeticExpressions {
         System.out.println(arithmeticStack("3 5 4 + *"));
         System.out.println(arithmeticStack("1 1 - 8 /"));
         System.out.println("---");
-        System.out.println(arithmeticQueue("2 4 6 3 / * +"));
         System.out.println(arithmeticQueue("3 5 4 + *"));
         System.out.println(arithmeticQueue("8 1 1 - /"));
     }
 
-    public static int arithmeticStack(String message){
-        Stack<Integer> stack = new Stack<>();
+    public static double arithmeticStack(String message){
+        Stack<Double> stack = new Stack<>();
 
         for (int i = 0; i<message.length(); i++){
             char c = message.charAt(i);
@@ -28,7 +27,7 @@ public class ArithmeticExpressions {
                 number+=c;
             }
             if(Character.isWhitespace(c) && !number.isEmpty()){
-                stack.push(Integer.parseInt(number));
+                stack.push(Double.parseDouble(number));
                 number="";
             }
             if (operators.contains(String.valueOf(c))) {
@@ -46,8 +45,8 @@ public class ArithmeticExpressions {
                         stack.push(result);
                         break;
                     case '/':
-                        int a = stack.pop();
-                        int b = stack.pop();
+                        double a = stack.pop();
+                        double b = stack.pop();
                         result = b / a;
                         stack.push(result);
                         break;
@@ -57,8 +56,8 @@ public class ArithmeticExpressions {
         return stack.pop();
     }
 
-    public static int arithmeticQueue(String message){
-        Queue<Integer> queue = new LinkedList<>();
+    public static double arithmeticQueue(String message){
+        Queue<Double> queue = new LinkedList<>();
 
         for (int i = 0; i < message.length(); i++){
             char c = message.charAt(i);
@@ -66,7 +65,7 @@ public class ArithmeticExpressions {
                 number += c;
             }
             if(Character.isWhitespace(c) && !number.isEmpty()){
-                queue.add(Integer.parseInt(number));
+                queue.add(Double.parseDouble(number));
                 number = "";
             }
             if (operators.contains(String.valueOf(c))) {
@@ -84,9 +83,7 @@ public class ArithmeticExpressions {
                         queue.add(result);
                         break;
                     case '/':
-                        int a = queue.poll();
-                        int b = queue.poll();
-                        result = b / a;
+                        result = queue.poll() / queue.poll();
                         queue.add(result);
                         break;
                 }
@@ -97,6 +94,6 @@ public class ArithmeticExpressions {
 
     private static final String operators = "+-*/";
     private static String number = "";
-    private static int result;
+    private static double result;
 
 }

@@ -2,8 +2,6 @@ package T5.ej1;
 
 import java.util.Stack;
 
-import static org.junit.Assert.assertTrue;
-
 /**
  * @author Pere Prior
  */
