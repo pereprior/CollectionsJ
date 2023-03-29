@@ -3,8 +3,6 @@ package T2.ej3;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static Utilities.Util.readInteger;
-
 /**
  * @author Pere Prior
  */

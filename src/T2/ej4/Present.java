@@ -3,7 +3,7 @@ package T2.ej4;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static Utilities.Util.readLine;
+import static Utils.Util.readLine;
 
 /**
  * @author Pere Prior

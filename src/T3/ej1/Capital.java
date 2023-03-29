@@ -1,7 +1,7 @@
 package T3.ej1;
 
 import java.util.HashMap;
-import static Utilities.Util.*;
+import static Utils.Util.*;
 import java.util.Map;
 
 /**

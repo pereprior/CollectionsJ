@@ -3,7 +3,7 @@ package T3.ej2;
 import java.util.HashMap;
 import java.util.Map;
 
-import static Utilities.Util.*;
+import static Utils.Util.*;
 
 /**
  * @author Pere Prior

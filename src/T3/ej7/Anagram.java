@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-import static Utilities.Util.*;
+import static Utils.Util.*;
 
 /**
  * @author Pere Prior

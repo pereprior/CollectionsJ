@@ -2,7 +2,7 @@ package T1.ej6;
 
 import java.util.ArrayList;
 
-import static Utilities.Util.*;
+import static Utils.Util.*;
 
 /**
  * @author Pere Prior

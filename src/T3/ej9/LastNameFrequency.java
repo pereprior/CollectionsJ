@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import static Utilities.Util.readLine;
+import static Utils.Util.readLine;
 
 public class LastNameFrequency {
 

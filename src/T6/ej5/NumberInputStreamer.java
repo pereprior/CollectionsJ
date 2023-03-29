@@ -1,19 +1,19 @@
-package T6.ej4;
+package T6.ej5;
 
 import java.util.ArrayList;
 
 /**
  * @author Pere Prior
  */
-public class UserInputStreamer {
+public class NumberInputStreamer {
 
     public static void main(String[] args) {
         boolean isTrue = true;
-        ArrayList<String> elements = new ArrayList<>();
+        ArrayList<Double> elements = new ArrayList<>();
 
         do {
-            String message = Utils.Util.readLine("Enter random text:");
-            if(message.isEmpty()){
+            double message = Utils.Util.readDouble("Enter random text:");
+            if(message==-1){
                 isTrue=false;
             } else {
                 elements.add(message);
@@ -21,6 +21,7 @@ public class UserInputStreamer {
         } while (isTrue);
 
         elements.stream()
+                .filter(element -> element<5 && element>=1)
                 .forEach(System.out::println);
     }
 
