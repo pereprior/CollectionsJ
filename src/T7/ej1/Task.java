@@ -10,14 +10,6 @@ public class Task implements Comparable<Task> {
         this.duration = duration;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
-
     @Override
     public String toString() {
         return "Task Priority: "+priority+" - Task Duration: "+duration;
