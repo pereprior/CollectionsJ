@@ -5,26 +5,33 @@ package T7.ej2;
  */
 public class City implements Comparable<City>{
 
-    public City(int plays,int wins){
-        this.plays=plays;
-        this.wins=wins;
+    public City(int moneyInvested, int prizesWon) {
+        this.moneyInvested = moneyInvested;
+        this.prizesWon = prizesWon;
+    }
+
+    public int getMoneyInvested() {
+        return moneyInvested;
+    }
+
+    public int getPrizesWon() {
+        return prizesWon;
     }
 
     @Override
-    public String toString() {
-        return "This city plays "+plays+" times and win "+wins+" times.";
-    }
+    public int compareTo(City o) {
+        double thisRatio = (double) moneyInvested / prizesWon;
+        double otherRatio = (double) o.moneyInvested / o.prizesWon;
+        int ratioComparison = Double.compare(thisRatio, otherRatio);
 
-    @Override
-    public int compareTo(City city) {
-        if (this.plays > city.plays && this.wins <= city.wins) {
-            return 1;
-        } else {
-            return -1;
+        if (ratioComparison == 0) {
+            return Integer.compare(moneyInvested, o.moneyInvested);
         }
+
+        return ratioComparison;
     }
 
-    private int plays;
-    private int wins;
+    private int moneyInvested;
+    private int prizesWon;
 
 }
