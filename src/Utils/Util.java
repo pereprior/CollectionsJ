@@ -40,8 +40,18 @@ public class Util {
     }
 
     public static String readLine(String message) throws InputMismatchException {
-        System.out.println(message);
-        return inputValue.nextLine();
+        String line;
+        while (true) {
+            try {
+                System.out.println(message);
+                line = inputValue.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Is not a valid parameter");
+                inputValue.nextLine();
+            }
+        }
+        return line;
     }
 
     public static void cleanScreen() {
@@ -67,6 +77,7 @@ public class Util {
         return list;
     }
 
-    private static Scanner inputValue = new Scanner(System.in).useLocale(Locale.US);
+    private static Scanner inputValue = new Scanner(System.in);
+    //private static Scanner inputValue = new Scanner(System.in).useLocale(Locale.US);
 
 }
